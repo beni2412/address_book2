@@ -16,7 +16,7 @@ public class AddressBook {
 	
 	
 	public void addPersonContact(PersonContact personContact) {
-		Predicate<PersonContact> isSameName = n -> n.getFirstName().equalsIgnoreCase(personContact.getFirstName());
+		Predicate<PersonContact> isSameName = n -> n.equals(personContact);
 		List<PersonContact> personsWithSameName = personContacts.stream().filter(isSameName).collect(Collectors.toList());
 		if(personsWithSameName.isEmpty())
 			personContacts.add(personContact);
