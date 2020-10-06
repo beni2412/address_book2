@@ -6,12 +6,13 @@ import com.capg.addressbook.service.PersonService;
 import com.capg.addressbook.dto.PersonContact;
 
 public class PersonServiceImpl implements PersonService {
-	
+
 	private Scanner sc;
-	
+
 	public PersonServiceImpl(Scanner sc) {
 		this.sc = sc;
 	}
+
 	@Override
 	public PersonContact createPerson() {
 		PersonContact personContact = new PersonContact();
@@ -36,7 +37,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public void updatePerson(PersonContact personContact) {
-		while(true) {
+		while (true) {
 			System.out.println("1. FirstName Update");
 			System.out.println("2. LastName Update");
 			System.out.println("3. Address Update");
@@ -52,11 +53,11 @@ public class PersonServiceImpl implements PersonService {
 			case 1:
 				System.out.println("Enter New FirstName");
 				String newName = sc.next();
-					personContact.setFirstName(newName);
+				personContact.setFirstName(newName);
 				break;
 			case 2:
 				System.out.println("Enter New LastName");
-				String newLastName= sc.next();
+				String newLastName = sc.next();
 				personContact.setLastName(newLastName);
 
 				break;
@@ -70,7 +71,7 @@ public class PersonServiceImpl implements PersonService {
 				System.out.println("Enter New City");
 				String newCity = sc.next();
 				personContact.setCity(newCity);
-				
+
 				break;
 			case 5:
 				System.out.println("Enter State");
@@ -80,7 +81,7 @@ public class PersonServiceImpl implements PersonService {
 				break;
 			case 6:
 				System.out.println("Enter New Zip");
-				Long newZip= sc.nextLong();
+				Long newZip = sc.nextLong();
 				personContact.setZip(newZip);
 
 				break;
@@ -89,7 +90,7 @@ public class PersonServiceImpl implements PersonService {
 				String newPhone = sc.next();
 				personContact.setPhone(newPhone);
 
-				break;	
+				break;
 			case 8:
 				System.out.println("Enter New Email");
 				String newEmail = sc.next();
@@ -104,17 +105,17 @@ public class PersonServiceImpl implements PersonService {
 				break;
 			}
 		}
-		
+
 	}
 
 	@Override
 	public void diplayPerson(PersonContact personContact) {
-		if(personContact == null) {
+		if (personContact == null) {
 			System.out.println("Person not found");
 			return;
 		}
 		System.out.println(personContact);
-		
+
 	}
 
 }

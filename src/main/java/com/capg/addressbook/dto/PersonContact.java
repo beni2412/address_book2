@@ -63,5 +63,17 @@ public class PersonContact {
 	public String toString() {
 		return "First Name: "+firstName+"\nLast Name: "+lastName+"\nAddress: "+address+"\nCity: "+city+"\nState: "+state+"\nZip: "+zip+"\nPhone Number: "+phone+"\nEmail: "+email+"\n\n";
 	}
-	
+	@Override
+	public boolean equals(Object obj) {
+		boolean result;
+		if(obj==null) {
+			result = false;
+		}
+		else {
+			PersonContact person = (PersonContact)obj;
+			result = this.firstName.equalsIgnoreCase(person.firstName);
+		}
+		
+		return result;
+	}
 }
