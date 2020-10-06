@@ -19,7 +19,9 @@ public class Executer {
 			System.out.println("2. Create a new Address Book");
 			System.out.println("3. Search Person in City");
 			System.out.println("4. Search Person in State");
-			System.out.println("5. Exit");
+			System.out.println("5. Get number of contacts in a City");
+			System.out.println("6. Get number of contacts in a State");
+			System.out.println("7. Exit");
 			int options = sc.nextInt();
 
 			switch (options) {
@@ -36,6 +38,12 @@ public class Executer {
 				searchByState(addressBookService, addressBooks, sc);
 				break;
 			case 5:
+				countByCity(addressBookService, addressBooks, sc);
+				break;
+			case 6:
+				countByState(addressBookService, addressBooks, sc);
+				break;
+			case 7:
 				System.out.println("Bye\n");
 				return;
 			default:
@@ -44,6 +52,8 @@ public class Executer {
 			}
 		}
 	}
+
+	
 
 	public static void openAddressBook(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
 		System.out.print("Enter Name: ");
@@ -75,5 +85,17 @@ public class Executer {
 		System.out.print("Enter State: ");
 		String state = sc.next();
 		addressBooks.searchContactsByState(state);
+	}
+	
+	private static void countByCity(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter City: ");
+		String city = sc.next();
+		addressBooks.countContactsByCity(city);
+	}
+	
+	private static void countByState(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter State: ");
+		String state = sc.next();
+		addressBooks.countContactsByState(state);
 	}
 }
