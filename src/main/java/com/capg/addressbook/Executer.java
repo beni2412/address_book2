@@ -15,42 +15,54 @@ public class Executer {
 		AddressBookService addressBookService = new AddressBookServiceImpl(sc);
 		System.out.println("Welcome to Address Book");
 		while (true) {
-				System.out.println("1. Open an existing Address book");
-				System.out.println("2. Create a new Address Book");
-				System.out.println("3. Exit");
-				int options = sc.nextInt();
+			System.out.println("1. Open an existing Address book");
+			System.out.println("2. Create a new Address Book");
+			System.out.println("3. Search Person in City/State");
+			System.out.println("4. Exit");
+			int options = sc.nextInt();
 
-				switch (options) {
-				case 1:
-				openAddressBook(addressBookService, addressBooks,sc);
-					break;
-				case 2:
-					createAddressBook(addressBookService, addressBooks, sc);
-					break;
-				case 3:
-					System.out.println("Bye\n");
-					return;
-				default:
-					break;
-				}
+			switch (options) {
+			case 1:
+				openAddressBook(addressBookService, addressBooks, sc);
+				break;
+			case 2:
+				createAddressBook(addressBookService, addressBooks, sc);
+				break;
+			case 3:
+				searchByPlace(addressBookService, addressBooks, sc);
+				break;
+			case 4:
+				System.out.println("Bye\n");
+				return;
+			default:
+				System.out.println("Invalid Input");
+				break;
+			}
 		}
 	}
-	public static void openAddressBook(AddressBookService addressBookService,AddressBooks addressBooks,Scanner sc) {
-			System.out.print("Enter Name");
-			String name = sc.next();
-			AddressBook addressBook = addressBooks.containAddressBook(name);
-			if(Objects.nonNull(addressBook)) {
-				addressBookService.showOptions(addressBook);
-				return;
-			}
-			System.out.println("Not Address Book Found");
+
+	public static void openAddressBook(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter Name: ");
+		String name = sc.next();
+		AddressBook addressBook = addressBooks.containAddressBook(name);
+		if (Objects.nonNull(addressBook)) {
+			addressBookService.showOptions(addressBook);
+			return;
+		}
+		System.out.println("No Address Book Found");
 	}
-	
-	public static void createAddressBook(AddressBookService addressBookService,AddressBooks addressBooks ,Scanner sc) {
-		System.out.print("Enter Name");
+
+	public static void createAddressBook(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter Name: ");
 		String name = sc.next();
 		AddressBook addressBook = addressBookService.createAddressBook(name);
 		addressBooks.addAddressBook(addressBook);
 		System.out.print("Created new address book\n");
+	}
+
+	public static void searchByPlace(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter place: ");
+		String place = sc.next();
+		addressBooks.searchContactsByPlace(place);
 	}
 }

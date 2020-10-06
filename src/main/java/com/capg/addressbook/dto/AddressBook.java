@@ -9,6 +9,16 @@ public class AddressBook {
 	
 	 private List<PersonContact> personContacts;
 	
+	public List<PersonContact> getPersonContacts() {
+		return personContacts;
+	}
+
+
+	public void setPersonContacts(List<PersonContact> personContacts) {
+		this.personContacts = personContacts;
+	}
+
+
 	public AddressBook(String name) {
 		this.name = name;
 		personContacts= new ArrayList<PersonContact>();
