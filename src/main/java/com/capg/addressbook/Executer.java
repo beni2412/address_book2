@@ -17,8 +17,9 @@ public class Executer {
 		while (true) {
 			System.out.println("1. Open an existing Address book");
 			System.out.println("2. Create a new Address Book");
-			System.out.println("3. Search Person in City/State");
-			System.out.println("4. Exit");
+			System.out.println("3. Search Person in City");
+			System.out.println("4. Search Person in State");
+			System.out.println("5. Exit");
 			int options = sc.nextInt();
 
 			switch (options) {
@@ -29,9 +30,12 @@ public class Executer {
 				createAddressBook(addressBookService, addressBooks, sc);
 				break;
 			case 3:
-				searchByPlace(addressBookService, addressBooks, sc);
+				searchByCity(addressBookService, addressBooks, sc);
 				break;
 			case 4:
+				searchByState(addressBookService, addressBooks, sc);
+				break;
+			case 5:
 				System.out.println("Bye\n");
 				return;
 			default:
@@ -59,10 +63,17 @@ public class Executer {
 		addressBooks.addAddressBook(addressBook);
 		System.out.print("Created new address book\n");
 	}
-
-	public static void searchByPlace(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
-		System.out.print("Enter place: ");
-		String place = sc.next();
-		addressBooks.searchContactsByPlace(place);
+	
+	
+	public static void searchByCity(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter City: ");
+		String city = sc.next();
+		addressBooks.searchContactsByCity(city);
+	}
+	
+	public static void searchByState(AddressBookService addressBookService, AddressBooks addressBooks, Scanner sc) {
+		System.out.print("Enter State: ");
+		String state = sc.next();
+		addressBooks.searchContactsByState(state);
 	}
 }
