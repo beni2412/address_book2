@@ -23,15 +23,31 @@ public class AddressBooks {
 		return null;
 	}
 
-	public void searchContactsByPlace(String place) {
+	public void searchContactsByCity(String city) {
+		System.out.println("The contacts in "+city+" are: /n");
 		addressBooks.stream().forEach(n -> {
 			n.getPersonContacts().stream()
-					.filter(n1 -> n1.getCity().equalsIgnoreCase(place) || n1.getState().equalsIgnoreCase(place))
+					.filter(n1 -> n1.getCity().equalsIgnoreCase(city))
 					.forEach(n2 -> {
+						
 						System.out.println(n2);
 					});
 		});
-		System.out.println("If no contact is shown above then there is no person from this place\n");
+		System.out.println("If no contact is shown above then there is no person from this city\n");
+
+	}
+	
+	public void searchContactsByState(String state) {
+		System.out.println("The contacts in "+state+" are: /n");
+		addressBooks.stream().forEach(n -> {
+			n.getPersonContacts().stream()
+					.filter(n1 -> n1.getState().equalsIgnoreCase(state))
+					.forEach(n2 -> {
+						
+						System.out.println(n2);
+					});
+		});
+		System.out.println("If no contact is shown above then there is no person from this state\n");
 
 	}
 
