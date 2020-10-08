@@ -33,7 +33,10 @@ public class AddressBookServiceImpl implements AddressBookService {
 			System.out.println("3. Delete a Person");
 			System.out.println("4. Add a Person");
 			System.out.println("5. View all Contacts");
-			System.out.println("6. Exit");
+			System.out.println("6. View all Contacts sorted by city");
+			System.out.println("7. View all Contacts sorted by state");
+			System.out.println("8. View all Contacts sorted by Zip");
+			System.out.println("9. Exit");
 		
 			int option = sc.nextInt();
 			switch(option) {	
@@ -54,6 +57,15 @@ public class AddressBookServiceImpl implements AddressBookService {
 				showContacts();
 				break;
 			case 6:
+				addressBook.sortByCity();
+				break;
+			case 7:
+				addressBook.sortByState();
+				break;
+			case 8:
+				addressBook.sortByZip();
+				break;
+			case 9:
 				return;
 			default:
 				System.out.println("Invalid Entry");
