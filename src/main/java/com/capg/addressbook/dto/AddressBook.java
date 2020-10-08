@@ -8,7 +8,8 @@ public class AddressBook {
 	private String name;
 	
 	 private List<PersonContact> personContacts;
-	
+	 public HashMap<String, List> DictionaryOfCity = new HashMap<String, List>();
+	 public HashMap<String, List> DictionaryOfCit = new HashMap<String, List>();
 	public List<PersonContact> getPersonContacts() {
 		return personContacts;
 	}
@@ -22,6 +23,10 @@ public class AddressBook {
 	public AddressBook(String name) {
 		this.name = name;
 		personContacts= new ArrayList<PersonContact>();
+	}
+	
+	public List<PersonContact> showAllContacts(){
+		return personContacts.stream().sorted((n1,n2) -> n1.getFirstName().compareTo(n2.getFirstName())).collect(Collectors.toList());
 	}
 	
 	
