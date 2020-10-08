@@ -1,5 +1,6 @@
 package com.capg.addressbook.service.implement;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -7,6 +8,7 @@ import com.capg.addressbook.dto.AddressBook;
 import com.capg.addressbook.dto.PersonContact;
 import com.capg.addressbook.service.AddressBookService;
 import com.capg.addressbook.service.PersonService;
+
 
 public class AddressBookServiceImpl implements AddressBookService {
 	
@@ -30,7 +32,8 @@ public class AddressBookServiceImpl implements AddressBookService {
 			System.out.println("2. Update a Person");
 			System.out.println("3. Delete a Person");
 			System.out.println("4. Add a Person");
-			System.out.println("5. Exit");
+			System.out.println("5. View all Contacts");
+			System.out.println("6. Exit");
 		
 			int option = sc.nextInt();
 			switch(option) {	
@@ -48,6 +51,9 @@ public class AddressBookServiceImpl implements AddressBookService {
 				createPerson();
 				break;
 			case 5:
+				showContacts();
+				break;
+			case 6:
 				return;
 			default:
 				System.out.println("Invalid Entry");
@@ -57,6 +63,12 @@ public class AddressBookServiceImpl implements AddressBookService {
 			}
 		}
 	}
+	public void showContacts() {
+		 List<PersonContact> contactList = addressBook.showAllContacts();
+		 contactList.stream().forEach(n -> System.out.println(n));
+		
+	}
+
 	@Override
 	public void findPerson() {
 		System.out.println("Enter Person Name");
