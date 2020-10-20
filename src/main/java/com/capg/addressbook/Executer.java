@@ -9,7 +9,7 @@ import com.capg.addressbook.service.AddressBookService;
 import com.capg.addressbook.service.implement.AddressBookServiceImpl;
 
 public class Executer {
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		AddressBooks addressBooks = new AddressBooks();
 		AddressBookService addressBookService = new AddressBookServiceImpl(sc);
@@ -51,7 +51,7 @@ public class Executer {
 				break;
 			}
 		}
-	}
+	}*/
 
 	
 

@@ -27,7 +27,7 @@ public class PersonServiceImpl implements PersonService {
 		System.out.print("Enter State");
 		personContact.setState(sc.next());
 		System.out.print("Enter Zip");
-		personContact.setZip(sc.nextLong());
+		personContact.setZip(sc.next());
 		System.out.print("Enter Phone");
 		personContact.setPhone(sc.next());
 		System.out.print("Enter Email");
@@ -81,7 +81,7 @@ public class PersonServiceImpl implements PersonService {
 				break;
 			case 6:
 				System.out.println("Enter New Zip");
-				Long newZip = sc.nextLong();
+				String newZip = sc.next();
 				personContact.setZip(newZip);
 
 				break;

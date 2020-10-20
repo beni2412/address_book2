@@ -6,9 +6,28 @@ public class PersonContact {
 	private String address;
 	private String city;
 	private String state;
-	private Long zip;
+	private String zip;
 	private String phone;
 	private String email;
+	
+	
+
+	public PersonContact() {
+		
+	}
+
+	public PersonContact(String firstName, String lastName, String address, String city, String state, String zip,
+			String phone, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phone = phone;
+		this.email = email;
+	}
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
@@ -30,7 +49,7 @@ public class PersonContact {
 		this.state = state;
 	}
 
-	public void setZip(Long zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
@@ -62,7 +81,7 @@ public class PersonContact {
 		return state;
 	}
 
-	public Long getZip() {
+	public String getZip() {
 		return zip;
 	}
 
@@ -76,8 +95,8 @@ public class PersonContact {
 
 	@Override
 	public String toString() {
-		return "First Name: " + firstName + "\nLast Name: " + lastName + "\nAddress: " + address + "\nCity: " + city
-				+ "\nState: " + state + "\nZip: " + zip + "\nPhone Number: " + phone + "\nEmail: " + email + "\n\n";
+		return "First name-" + firstName + ",Last name-" + lastName + ",Address-" + address + ",City-" + city
+				+ ",State-" + state + ",Zip-" + zip + ",Phone Number-" + phone + ",Email-" + email ;
 	}
 
 	@Override
