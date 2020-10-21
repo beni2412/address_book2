@@ -1,13 +1,23 @@
 package com.capg.addressbook.dto;
 
+import com.opencsv.bean.CsvBindByName;
+
 public class PersonContact {
+	@CsvBindByName
 	private String firstName;
+	@CsvBindByName
 	private String lastName;
+	@CsvBindByName
 	private String address;
+	@CsvBindByName
 	private String city;
+	@CsvBindByName
 	private String state;
+	@CsvBindByName
 	private String zip;
+	@CsvBindByName
 	private String phone;
+	@CsvBindByName
 	private String email;
 	
 	
@@ -16,11 +26,11 @@ public class PersonContact {
 		
 	}
 
-	public PersonContact(String firstName, String lastName, String address, String city, String state, String zip,
+	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
 			String phone, String email) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.firstName = firstname;
+		this.lastName = lastname;
 		this.address = address;
 		this.city = city;
 		this.state = state;
@@ -29,12 +39,12 @@ public class PersonContact {
 		this.email = email;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setFirstName(String firstname) {
+		this.firstName = firstname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String lastname) {
+		this.lastName = lastname;
 	}
 
 	public void setAddress(String address) {

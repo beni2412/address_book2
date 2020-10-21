@@ -8,7 +8,7 @@ import com.capg.addressbook.dto.*;
 public class AddressBookServiceMainIO {
 
 	public static void main(String[] args) {
-		AddressBookIOService addressBookFileIOService = new AddressBookIOService();
+		AddressBookIOService addressBookIOService = new AddressBookIOService();
 		List<PersonContact> contactList = new ArrayList<>();
 		PersonContact contact1 = new PersonContact("Hardaman", "Benipal", "Mohali", "Mohali", "Punjab", "160071",
 				"91 9999999999", "abc@google.com");
@@ -19,12 +19,22 @@ public class AddressBookServiceMainIO {
 		contactList.add(contact1);
 		contactList.add(contact2);
 		contactList.add(contact3);
-		addressBookFileIOService.writeData(contactList);
-		List<PersonContact> list =addressBookFileIOService.readData();
+		/*AddressBookIOService.writeData(contactList);
+		List<PersonContact> list =AddressBookIOService.readData();
+		System.out.println("Contacts read from the file are:");
 		for(PersonContact contact : list) {
 			System.out.println(contact);
 		}
 		System.out.println(list.size());
+		*/
+		addressBookIOService.writeCSV(contactList);
+		List<PersonContact> readList =addressBookIOService.readCSV();
+		System.out.println("Contacts read from the file are:");
+		for(PersonContact contact : readList) {
+			System.out.println(contact);
+		}
+		System.out.println(readList.size());
+		
 
 	}
 
