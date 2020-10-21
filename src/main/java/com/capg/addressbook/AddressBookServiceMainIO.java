@@ -26,7 +26,6 @@ public class AddressBookServiceMainIO {
 			System.out.println(contact);
 		}
 		System.out.println(list.size());
-		*/
 		addressBookIOService.writeCSV(contactList);
 		List<PersonContact> readList =addressBookIOService.readCSV();
 		System.out.println("Contacts read from the file are:");
@@ -34,6 +33,9 @@ public class AddressBookServiceMainIO {
 			System.out.println(contact);
 		}
 		System.out.println(readList.size());
+		*/
+		addressBookIOService.writeJson(contactList);
+		addressBookIOService.readJson();
 		
 
 	}
