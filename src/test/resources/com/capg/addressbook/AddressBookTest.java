@@ -1,4 +1,4 @@
-package addressbook2;
+package com.capg.addressbook;
 
 import static org.junit.Assert.*;
 
@@ -25,5 +25,12 @@ public class AddressBookTest {
 	public void givenAddressBookDB_ShouldMatchCount() throws AddressBookException {
 		List<PersonContact> contactList = addressBookDBService.readContacts();
 		Assert.assertEquals(6, contactList.size());
+	}
+
+	@Test
+	public void givenAddressBookDB_WhenContactUpdatedShouldSyncWithDB() throws AddressBookException {
+			addressBookDBService.updateContactInfoInAddressbook("Daman", "Benipal", "95989");
+			PersonContact contact = addressBookDBService.AddressBookSyncWithDB("Daman");
+			Assert.assertEquals("95989", contact.getPhone());
 	}
 }
