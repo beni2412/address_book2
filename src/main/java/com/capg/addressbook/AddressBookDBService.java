@@ -64,7 +64,8 @@ public class AddressBookDBService {
 
 	public int updateContactInfoInAddressbook(String firstname, String lastname, String newContact)
 			throws AddressBookException {
-		String sql = String.format("update contact_details c, addressbook a  SET c.phone_number= '%s' WHERE c.id=a.id AND first_name = '%s' AND last_name='%s';",
+		String sql = String.format(
+				"update contact_details c, addressbook a  SET c.phone_number= '%s' WHERE c.id=a.id AND first_name = '%s' AND last_name='%s';",
 				newContact, firstname, lastname);
 		int res = 0;
 		try (Connection connection = this.getConnection()) {
@@ -83,9 +84,10 @@ public class AddressBookDBService {
 		return tempList.stream().filter(contact -> contact.getFirstName().contentEquals(firstName)).findFirst()
 				.orElse(null);
 	}
-	
+
 	public int getContactsWithinADateRange(LocalDate startDate, LocalDate endDate) throws AddressBookException {
-		String sql = String.format("SELECT * FROM addressbook WHERE date_added BETWEEN '%s' AND '%s';", Date.valueOf(startDate), Date.valueOf(endDate));
+		String sql = String.format("SELECT * FROM addressbook WHERE date_added BETWEEN '%s' AND '%s';",
+				Date.valueOf(startDate), Date.valueOf(endDate));
 		int noOfContacts = 0;
 		try (Connection connection = getConnection()) {
 			Statement statement = connection.createStatement();
@@ -99,5 +101,20 @@ public class AddressBookDBService {
 			e1.printStackTrace();
 		}
 		return noOfContacts;
+	}
+
+	public int getContactsFromPlace(String field, String placeName) throws AddressBookException {
+		String sql = String.format("SELECT * FROM address WHERE %s = '%s';",field, placeName);
+		int numberOfContacts=0;
+		try (Connection connection = getConnection()) {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				numberOfContacts++;
+			}
+		} catch (SQLException e) {
+			throw new AddressBookException(AddressBookException.ExceptionType.WRONG_INFO, e.getMessage());
+		}
+		return numberOfContacts;
 	}
 }

@@ -43,4 +43,18 @@ public class AddressBookTest {
 		Assert.assertEquals(3, contacts);
 
 	}
+	
+	@Test
+	public void givenAddressBookInDataBase_RetrieveContactsfromCity_ShouldReturnCorrectNumber() throws AddressBookException {
+		int contacts = addressBookDBService.getContactsFromPlace("city" ,"b");
+		Assert.assertEquals(2, contacts);
+
+	}
+	
+	@Test
+	public void givenAddressBookInDataBase_RetrieveContactsfromState_ShouldReturnCorrectNumber() throws AddressBookException {
+		int contacts = addressBookDBService.getContactsFromPlace("state" ,"c");
+		Assert.assertEquals(2, contacts);
+
+	}
 }
