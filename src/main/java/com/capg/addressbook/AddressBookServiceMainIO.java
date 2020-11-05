@@ -31,6 +31,7 @@ public class AddressBookServiceMainIO {
 		System.out.println("Contacts read from the file are:");
 		for(PersonContact contact : readList) {
 			System.out.println(contact);
+			
 		}
 		System.out.println(readList.size());
 		*/
