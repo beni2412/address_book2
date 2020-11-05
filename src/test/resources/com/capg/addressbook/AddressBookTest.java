@@ -57,4 +57,11 @@ public class AddressBookTest {
 		Assert.assertEquals(2, contacts);
 
 	}
+	
+	@Test
+	public void whenContactAddedToDataBase_ShouldMatchCount() throws AddressBookException {
+		addressBookDBService.addPersonContactToDatabase("Guri", "Sidhu", "sector 70", "Mohali", "Punjab", "160071", "9056618", "guri@gmail", LocalDate.now());
+		List<PersonContact> contactList = addressBookDBService.readContacts();
+		Assert.assertEquals(2, contactList.size());
+	}
 }
