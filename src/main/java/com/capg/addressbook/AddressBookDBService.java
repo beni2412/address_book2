@@ -1,10 +1,12 @@
 package com.capg.addressbook;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,5 +82,22 @@ public class AddressBookDBService {
 		List<PersonContact> tempList = this.readContacts();
 		return tempList.stream().filter(contact -> contact.getFirstName().contentEquals(firstName)).findFirst()
 				.orElse(null);
+	}
+	
+	public int getContactsWithinADateRange(LocalDate startDate, LocalDate endDate) throws AddressBookException {
+		String sql = String.format("SELECT * FROM addressbook WHERE date_added BETWEEN '%s' AND '%s';", Date.valueOf(startDate), Date.valueOf(endDate));
+		int noOfContacts = 0;
+		try (Connection connection = getConnection()) {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(sql);
+			while (resultSet.next()) {
+				noOfContacts++;
+			}
+		} catch (SQLException e) {
+			throw new AddressBookException(ExceptionType.WRONG_INFO, e.getMessage());
+		} catch (AddressBookException e1) {
+			e1.printStackTrace();
+		}
+		return noOfContacts;
 	}
 }

@@ -1,5 +1,7 @@
 package com.capg.addressbook.dto;
 
+import java.time.LocalDate;
+
 import com.opencsv.bean.CsvBindByName;
 
 public class PersonContact {
@@ -20,6 +22,8 @@ public class PersonContact {
 	@CsvBindByName
 	private String email;
 	
+	private LocalDate dateAdded;
+	
 	
 
 	public PersonContact() {
@@ -37,6 +41,12 @@ public class PersonContact {
 		this.zip = zip;
 		this.phone = phone;
 		this.email = email;
+	}
+	
+	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
+			String phone, String email, LocalDate dateAdded) {
+		this(firstname, lastname, address, city, state, zip, phone, email);
+		this.dateAdded = dateAdded;
 	}
 
 	public void setFirstName(String firstname) {
@@ -101,6 +111,16 @@ public class PersonContact {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	
+
+	public LocalDate getDateAdded() {
+		return dateAdded;
+	}
+
+	public void setDateAdded(LocalDate dateAdded) {
+		this.dateAdded = dateAdded;
 	}
 
 	@Override
