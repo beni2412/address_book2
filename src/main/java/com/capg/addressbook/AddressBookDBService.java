@@ -8,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.capg.addressbook.AddressBookException.ExceptionType;
 import com.capg.addressbook.dto.PersonContact;
@@ -188,6 +190,32 @@ public class AddressBookDBService {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+		}
+	}
+
+	public void addMultipleContacts(List<PersonContact> contactsToAddList) throws AddressBookException {
+		Map<Integer, Boolean> contactStatusMap = new HashMap<Integer, Boolean>();
+		contactsToAddList.forEach(contact -> {
+			contactStatusMap.put(contact.hashCode(), false);
+			Runnable task = () -> {
+				try {
+					this.addPersonContactToDatabase(contact.getFirstName(), contact.getLastName(), contact.getAddress(),
+							contact.getCity(), contact.getState(), contact.getZip(), contact.getPhone(),
+							contact.getEmail(), contact.getDateAdded());
+				} catch (AddressBookException e) {
+					e.printStackTrace();
+				}
+				contactStatusMap.put(contact.hashCode(), true);
+			};
+			Thread thread = new Thread(task, contact.getFirstName());
+			thread.start();
+		});
+		while (contactStatusMap.containsValue(false)) {
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

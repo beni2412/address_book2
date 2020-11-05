@@ -3,6 +3,7 @@ package com.capg.addressbook;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Assert;
@@ -63,5 +64,17 @@ public class AddressBookTest {
 		addressBookDBService.addPersonContactToDatabase("Guri", "Sidhu", "sector 70", "Mohali", "Punjab", "160071", "9056618", "guri@gmail", LocalDate.now());
 		List<PersonContact> contactList = addressBookDBService.readContacts();
 		Assert.assertEquals(2, contactList.size());
+	}
+	
+	@Test
+	public void whenAddedMultipleContactsUsingThreads_ShouldRetunCount() throws AddressBookException {
+		PersonContact[] arrOfContacts = {
+		new PersonContact("daman","beni","sec70","mohali","punjab","160071","9056618815","beni@gmail.com",LocalDate.now()),	
+		new PersonContact("harry","singh","sector1","chd","haryana","680041","445456666","harry@gmail.com",LocalDate.now()),
+		new PersonContact("harman","bandesha","urbanestate","patiala","punjab","140076","654545456","harman@gmail.com",LocalDate.now())
+		};
+		addressBookDBService.addMultipleContacts(Arrays.asList(arrOfContacts));
+		List<PersonContact> contactList = addressBookDBService.readContacts();
+		Assert.assertEquals(5, contactList.size());
 	}
 }
