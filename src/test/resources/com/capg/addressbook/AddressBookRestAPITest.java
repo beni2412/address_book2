@@ -73,16 +73,34 @@ public class AddressBookRestAPITest {
 	
 	@Test
 	public void givenSalaryShouldUpdateContactInAdddressBook_ShouldMatchWith201StatusCodeAndCount() {
-		PersonContact[] contacts = getContactsList();
+		PersonContact[] contactList = getContactsList();
 		AddressBookRestAPIService addressBookRestAPIService;
-		addressBookRestAPIService = new AddressBookRestAPIService(Arrays.asList(contacts));
+		addressBookRestAPIService = new AddressBookRestAPIService(Arrays.asList(contactList));
+		
 		addressBookRestAPIService.updateContactInfo("Harshal", "Bedi", "city", "chandigarh");
 		PersonContact contact = addressBookRestAPIService.getContact("Harshal", "Bedi");
 		String updatedContact = new Gson().toJson(contact);
 		RequestSpecification request = RestAssured.given();
 		request.header("Content-Type", "application/json");
 		request.body(updatedContact);
+		
 		Response response = request.put("/Contacts/" + contact.getId());
+		int statusCode = response.getStatusCode();
+		Assert.assertEquals(200, statusCode);
+	}
+	
+	@Test
+	public void givenContactNameAndId_shouldDeleteContactInfoFromJsonServer_ShouldMatchWithstatusCodeAndCount() {
+		PersonContact[] contactList = getContactsList();
+		AddressBookRestAPIService addressBookRestAPIService;
+		addressBookRestAPIService = new AddressBookRestAPIService(Arrays.asList(contactList));
+		
+		PersonContact contact = addressBookRestAPIService.getContact("aman", "beni");
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		Response response = request.delete("/Contacts/" + contact.getId());
+		addressBookRestAPIService.removeContact("aman", "beni");
+		
 		int statusCode = response.getStatusCode();
 		Assert.assertEquals(200, statusCode);
 	}
