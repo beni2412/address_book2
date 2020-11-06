@@ -1,0 +1,29 @@
+{
+"Contacts":
+[
+  {
+    "id":"1",
+    "firstName": "karan",
+    "lastName": "Singh",
+    "address": "baino",
+    "city": "patiala",
+    "state": "punjab",
+    "zip": "140069",
+    "phone": "9855644",
+    "email": "kara@gmail.com",
+    "dateAdded": "Nov 6, 2020"
+     },
+     {
+      "id":"1",
+    "firstName": "kirti",
+    "lastName": "kumar",
+    "address": "xyz",
+    "city": "jaipur",
+    "state": "rajasthan",
+    "zip": "1655098",
+    "phone": "454564654",
+    "email": "kirti@gmail.com",
+    "dateAdded": "Nov 6, 2020"
+     }
+]
+} 

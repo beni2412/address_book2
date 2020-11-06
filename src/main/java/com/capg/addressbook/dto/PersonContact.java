@@ -22,8 +22,8 @@ public class PersonContact {
 	@CsvBindByName
 	private String email;
 	
-	private LocalDate dateAdded;
-	
+	private String dateAdded;
+	public String id;
 	
 
 	public PersonContact() {
@@ -44,11 +44,15 @@ public class PersonContact {
 	}
 	
 	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
-			String phone, String email, LocalDate dateAdded) {
+			String phone, String email, String dateAdded) {
 		this(firstname, lastname, address, city, state, zip, phone, email);
-		this.dateAdded = dateAdded;
+		this.dateAdded = dateAdded.toString();
 	}
-
+	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
+			String phone, String email, String dateAdded, String id) {
+		this(firstname, lastname, address, city, state, zip, phone, email, dateAdded);
+		this.id = id;
+	}
 	public void setFirstName(String firstname) {
 		this.firstName = firstname;
 	}
@@ -115,12 +119,12 @@ public class PersonContact {
 	
 	
 
-	public LocalDate getDateAdded() {
+	public String getDateAdded() {
 		return dateAdded;
 	}
 
 	public void setDateAdded(LocalDate dateAdded) {
-		this.dateAdded = dateAdded;
+		this.dateAdded = dateAdded.toString();
 	}
 
 	@Override
