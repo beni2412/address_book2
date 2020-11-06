@@ -1,29 +1,64 @@
 {
-"Contacts":
-[
-  {
-    "id":"1",
-    "firstName": "karan",
-    "lastName": "Singh",
-    "address": "baino",
-    "city": "patiala",
-    "state": "punjab",
-    "zip": "140069",
-    "phone": "9855644",
-    "email": "kara@gmail.com",
-    "dateAdded": "Nov 6, 2020"
-     },
-     {
-      "id":"1",
-    "firstName": "kirti",
-    "lastName": "kumar",
-    "address": "xyz",
-    "city": "jaipur",
-    "state": "rajasthan",
-    "zip": "1655098",
-    "phone": "454564654",
-    "email": "kirti@gmail.com",
-    "dateAdded": "Nov 6, 2020"
-     }
-]
-} 
+  "Contacts": [
+    {
+      "id": "1",
+      "firstName": "karan",
+      "lastName": "Singh",
+      "address": "baino",
+      "city": "patiala",
+      "state": "punjab",
+      "zip": "140069",
+      "phone": "9855644",
+      "email": "kara@gmail.com",
+      "dateAdded": "Nov 6, 2020"
+    },
+    {
+      "id": "1",
+      "firstName": "kirti",
+      "lastName": "kumar",
+      "address": "xyz",
+      "city": "jaipur",
+      "state": "rajasthan",
+      "zip": "1655098",
+      "phone": "454564654",
+      "email": "kirti@gmail.com",
+      "dateAdded": "Nov 6, 2020"
+    },
+    {
+      "firstName": "harman",
+      "lastName": "bandesha",
+      "address": "urbanestate",
+      "city": "patiala",
+      "state": "punjab",
+      "zip": "140076",
+      "phone": "654545456",
+      "email": "harman@gmail.com",
+      "dateAdded": "2020-11-06",
+      "id": "tCmqPWn"
+    },
+    {
+      "firstName": "aman",
+      "lastName": "beni",
+      "address": "sec70",
+      "city": "mohali",
+      "state": "punjab",
+      "zip": "160071",
+      "phone": "6121565",
+      "email": "aman@gmail.com",
+      "dateAdded": "2020-11-06",
+      "id": "gkifJZo"
+    },
+    {
+      "firstName": "harshal",
+      "lastName": "bedi",
+      "address": "sec21",
+      "city": "mohali",
+      "state": "punjab",
+      "zip": "160095",
+      "phone": "54565654",
+      "email": "harshal@gmail.com",
+      "dateAdded": "2020-11-06",
+      "id": "SI7OdaO"
+    }
+  ]
+}

@@ -44,12 +44,12 @@ public class PersonContact {
 	}
 	
 	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
-			String phone, String email, String dateAdded) {
+			String phone, String email, LocalDate dateAdded) {
 		this(firstname, lastname, address, city, state, zip, phone, email);
 		this.dateAdded = dateAdded.toString();
 	}
 	public PersonContact(String firstname, String lastname, String address, String city, String state, String zip,
-			String phone, String email, String dateAdded, String id) {
+			String phone, String email, LocalDate dateAdded, String id) {
 		this(firstname, lastname, address, city, state, zip, phone, email, dateAdded);
 		this.id = id;
 	}
@@ -119,8 +119,8 @@ public class PersonContact {
 	
 	
 
-	public String getDateAdded() {
-		return dateAdded;
+	public LocalDate getDateAdded() {
+		return LocalDate.parse(dateAdded);
 	}
 
 	public void setDateAdded(LocalDate dateAdded) {
