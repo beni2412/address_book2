@@ -70,5 +70,22 @@ public class AddressBookRestAPITest {
 		request.body(contactJson);
 		return request.post("/Contacts");
 	}
+	
+	@Test
+	public void givenSalaryShouldUpdateContactInAdddressBook_ShouldMatchWith201StatusCodeAndCount() {
+		PersonContact[] contacts = getContactsList();
+		AddressBookRestAPIService addressBookRestAPIService;
+		addressBookRestAPIService = new AddressBookRestAPIService(Arrays.asList(contacts));
+		addressBookRestAPIService.updateContactInfo("Harshal", "Bedi", "city", "chandigarh");
+		PersonContact contact = addressBookRestAPIService.getContact("Harshal", "Bedi");
+		String updatedContact = new Gson().toJson(contact);
+		RequestSpecification request = RestAssured.given();
+		request.header("Content-Type", "application/json");
+		request.body(updatedContact);
+		Response response = request.put("/Contacts/" + contact.getId());
+		int statusCode = response.getStatusCode();
+		Assert.assertEquals(200, statusCode);
+	}
+
 
 }
